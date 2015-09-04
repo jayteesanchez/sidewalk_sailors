@@ -26,13 +26,13 @@ if (app.get("env") === "development") {
 
 // production code
 if (process.env.NODE_ENV === 'production') {
-  mongoose.connect('mongodb://swsadmin:sUe2W#B68g@apollo.modulusmongo.net:27017/gyd7yZoj');
+  mongoose.connect('mongodb://jaytee.sanchez:Capital22@ds031203.mongolab.com:31203/heroku_1p4qblcd');
   app.use(session({
     secret: 'keyboard cat',
     saveUninitialized: false, // don't create session until something stored
     resave: false, //don't save session if unmodified
     store: new MongoStore({
-        url: 'mongodb://swsadmin:sUe2W#B68g@apollo.modulusmongo.net:27017/gyd7yZoj',
+        url: 'mongodb://jaytee.sanchez:Capital22@ds031203.mongolab.com:31203/heroku_1p4qblcd',
         touchAfter: 24 * 3600 // time period in seconds
     })
   }));
