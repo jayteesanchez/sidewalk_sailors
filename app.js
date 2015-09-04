@@ -51,7 +51,6 @@ app.use(cookieParser());
 app.use(methodOverride('_method'))
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 if (app.get("env") === "development") {
   // auth middleware
