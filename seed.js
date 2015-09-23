@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-// mongoose.connect('mongodb://localhost:27017/sidewalk_sailors');
-console.log('Mongoose connected');
+
+mongoose.connect('mongodb://admin:1234@ds041583.mongolab.com:41583/heroku_nq7f61dg');
 var Pirate = require('./models/Pirate');
 var Treasure = require('./models/Treasure');
 
