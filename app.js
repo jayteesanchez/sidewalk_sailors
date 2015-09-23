@@ -19,24 +19,20 @@ var routes = require('./routes/index');
 var app    = express();
 var router = express.Router();
 
-// code to run in development mode
-if (app.get("env") === "development") {
-  mongoose.connect('mongodb://localhost:27017/sidewalk_sailors');
-}
+var config = require('./config');
 
-// production code
-if (process.env.NODE_ENV === 'production') {
-  mongoose.connect('mongodb://heroku_nq7f61dg:lmslp29mvo4q6r74q21gn2o522@ds041583.mongolab.com:41583/heroku_nq7f61dg');
-  app.use(session({
-    secret: 'keyboard cat',
-    saveUninitialized: false, // don't create session until something stored
-    resave: false, //don't save session if unmodified
-    store: new MongoStore({
-        url: 'mongodb://heroku_nq7f61dg:lmslp29mvo4q6r74q21gn2o522@ds041583.mongolab.com:41583/heroku_nq7f61dg',
-        touchAfter: 24 * 3600 // time period in seconds
-    })
-  }));
-}
+mongoose.connect(config.database);
+
+app.use(session({
+  secret: 'keyboard cat',
+  saveUninitialized: false, // don't create session until something stored
+  resave: false, //don't save session if unmodified
+  store: new MongoStore({
+      url: config.database,
+      touchAfter: 24 * 3600 // time period in seconds
+  })
+}));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
